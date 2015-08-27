@@ -1,0 +1,262 @@
+<!-- Preloader -->
+<div id="preloader">
+    <div class="tb-cell">
+        <div id="page-loading">
+            <div></div>
+            <p>Loading</p>
+        </div>
+    </div>
+</div>
+<!-- Wrap -->
+<div id="wrap"> 
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo float-left">
+                <a href="index.html" title=""><img src="/assets/logo-header.png" alt=""></a>
+            </div>
+            <!-- End Logo -->
+            <!-- Bars -->
+            <div class="bars" id="bars"></div>
+            <!-- End Bars -->
+
+            <!--Navigation-->
+            <nav class="navigation nav-c" id="navigation" data-menu-type="1200">
+                <div class="nav-inner">
+                    <a href="#" class="bars-close" id="bars-close">Close</a>
+                    <div class="tb">
+                        <div class="tb-cell">
+                            <ul class="menu-list text-uppercase">
+                                <li class="current-menu-parent">
+                                    <a href="index.html" title="">button 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">button2</a>
+                                </li>
+                                <li>
+                                    <a href="#" title="">button3</a>
+                                </li>
+                                <li>
+                                    <a href="#" title="">button4</a>
+                                </li>
+                                <li>
+                                    <a href="#" title="">button5</a>
+                                </li>
+                                <li>
+                                    <a href="#" title="">button6</a>
+                                </li>
+                                
+                                <li>
+                                  <% if current_user%>
+                                    <%= link_to "Signout", destroy_user_session_path, method: :delete %>
+                                  <% else %>
+                                    <%= link_to "Login / signup", root_path %>
+                                  <% end %>
+                                  
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!--End Navigation-->
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <!--Banner-->
+    <section class="sub-banner">
+        <!--Background-->
+        <div class="bg-parallax bg-1"></div>
+        <!--End Background-->
+        <!-- Logo -->
+        <div class="logo-banner text-center">
+            <a href="" title="">
+                <img src="/assets/logo-banner.png" alt="">
+            </a>
+        </div>
+        <!-- Logo -->
+    </section>
+    <!--End Banner-->
+
+    <!-- Main -->
+    <div class="main">
+        <div class="container">
+            <div class="main-cn element-page bg-white clearfix">
+                <!--Breakcrumb-->
+                <section class="breakcrumb-sc">
+                    <ul class="breadcrumb arrow">
+                        <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+                        <li>User Reviews</li>
+                    </ul>
+                    <div class="support float-right">
+                        <small>Got a question?</small> 123-123-1234
+                    </div>
+                </section>
+                <!--End Breakcrumb-->
+                
+                <section class="user-profile">
+                        <div class="user-form user-signup">
+                            <div class="row">
+                              <div class="col-md-5">
+                                  <h2 class="user-profile__title">Sign in</h2>
+                                  <p>Access your account information and manage your bookings.</p>
+                                  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                                    <div class="field-input">
+                                      <%= f.email_field :email, autofocus: true, class: "input-text", placeholder: 'Email*' %>
+                                    </div>
+
+                                    <div class="field-input">
+                                      <%= f.password_field :password, autocomplete: "off", class: "input-text", placeholder: 'Password*' %>
+                                    </div>
+
+                                    <% if devise_mapping.rememberable? -%>
+                                      <div class="field-input">
+                                        <%= f.check_box :remember_me, id:"checkbox" %>
+                                        <%= f.label :remember_me %>
+                                      </div>
+                                      <a href="#">Get a new password</a>
+                                    <% end -%>
+
+                                    <div class="field-input">
+                                      <%= f.submit "Log in", class: "awe-btn awe-btn-1 awe-btn-medium" %>
+                                    </div>
+                                  <% end %>
+                              </div>
+                    
+                            <div class="col-md-5 col-md-offset-2">
+                              <h2 class="user-profile__title">Sign up</h2>
+                              <p>Sign up now and receive exclusive offers with huge discounts </p>
+                              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                                <% devise_error_messages(flash).each do |msg| %>
+                                  <%= msg %>
+                                <%end%>
+
+                                <div class="field-input">
+                                  <%= f.text_field :firstname, autofocus: true, class: "input-text", placeholder: 'FirstName*' %>
+                                </div>
+
+                                <div class="field-input">
+                                  <%= f.text_field :lastname, autofocus: true, class: "input-text", placeholder: 'LastName*' %>
+                                </div>
+
+                                <div class="field-input">
+                                  <%= f.email_field :email, autofocus: true, class: "input-text", placeholder: 'Email*' %>
+                                </div>
+
+                                <div class="field-input">
+                                  <% if @minimum_password_length %>
+                                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                                  <% end %><br />
+                                  <%= f.password_field :password, autocomplete: "off", class: "input-text", placeholder: 'Password*' %>
+                                </div>
+
+                                <div class="field-input">
+                                  <%= f.password_field :password_confirmation, autocomplete: "off", class: "input-text", placeholder: 'Password Confirmation*' %>
+                                </div>
+
+                                <div class="field-input">
+                                  <div class="check-box">
+                                    <input type="checkbox" id="offers">
+                                    <label for="offers"> Send me Special Offers &amp; Promotions</label>
+                                </div>
+                              
+                                <div class="field-input">
+                                  <%= f.submit "Sign up", class: "awe-btn awe-btn-1 awe-btn-medium" %>
+                                </div>
+                              <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </!-- End Main --!-- Footer -->
+    <footer>
+<div class="container">
+    <div class="row">
+        <!-- Logo -->
+        <div class="col-md-4">
+            <div class="logo-foter">
+                <a href="index.html" title=""><img src="/assets/logo-footer.png" alt=""></a>
+            </div>
+        </div>
+        <!-- End Logo -->
+                <!-- Navigation Footer -->
+              <div class="col-xs-6 col-sm-3 col-md-2">
+                  <div class="ul-ft">
+                      <ul>
+                          <li><a href="about.html" title="">About</a></li>
+                            <li><a href="blog.html" title="">Blog</a></li>
+                            <li><a href="fqa.html" title="">FQA</a></li>
+                            <li><a href="careers.html" title="">Carrers</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navigation Footer -->
+                <!-- Navigation Footer -->
+                <div class="col-xs-6 col-sm-3 col-md-2">
+                    <div class="ul-ft">
+                        <ul>
+                            <li><a href="contact.html" title="">Contact Us</a></li>
+                            <li><a href="#" title="">Privacy Policy</a></li>
+                            <li><a href="#" title="">Term of Service</a></li>
+                            <li><a href="#" title="">Security</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navigation Footer -->
+                <!-- Footer Currency, Language -->
+                <div class="col-sm-6 col-md-4">
+                    <!-- Language -->
+                    <div class="currency-lang-bottom dropdown-cn float-left">
+                        <div class="dropdown-head">
+                            <span class="angle-down"><i class="fa fa-angle-down"></i></span>
+                        </div>
+                        <div class="dropdown-body">
+                            <ul>
+                                <li class="current"><a href="#" title="">English</a></li>
+                                <li><a href="#" title="">Bahasa Melayu</a></li>
+                                <li><a href="#" title="">Català</a></li>
+                                <li><a href="#" title="">Dansk</a></li>
+                                <li><a href="#" title="">Deutsch</a></li>
+                                <li><a href="#" title="">Francais</a></li>
+                                <li><a href="#" title="">Italiano</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Language -->
+                    <!-- Currency -->
+                    <div class="currency-lang-bottom dropdown-cn float-left">
+                        <div class="dropdown-head">
+                            <span class="angle-down"><i class="fa fa-angle-down"></i></span>
+                        </div>
+                        <div class="dropdown-body">
+                            <ul>
+                                <li class="current"><a href="#" title="">US</a></li>
+                                <li><a href="#" title="">ARS</a></li>
+                                <li><a href="#" title="">ADU</a></li>
+                                <li><a href="#" title="">CAD</a></li>
+                                <li><a href="#" title="">CHF</a></li>
+                                <li><a href="#" title="">CNY</a></li>
+                                <li><a href="#" title="">CZK</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Currency -->
+                    <!--CopyRight-->
+                    <p class="copyright">
+                        © 2015 spotmyarena All rights reserved.
+                    </p>
+                    <!--CopyRight-->
+                </div>
+                <!-- End Footer Currency, Language -->
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+    
+</div>
+
+
